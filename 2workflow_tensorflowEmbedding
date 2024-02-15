@@ -1,0 +1,23 @@
+tensorflowEmbedding_lstm.ipynb file: 
+
+1. Load the preprocessed data. 
+
+2. Use OOP instantiate a class for neural network and hyper tuner. 
+The neural network uses tensorflow embedding layer, and a LSTM layer then a dense layer. 
+The tuner uses BayesianOptimization method for hyper parameter tuning. 
+Key features of the model are presented in the following code.  
+
+model.compile(optimizer=Adam(learning_rate=hp_learning_rate),
+                      loss='categorical_crossentropy',
+                      metrics=['accuracy'])
+
+tuner = BayesianOptimization(
+    hypermodel,
+    objective='val_accuracy',
+    max_trials=3,
+    num_initial_points=2,
+    directory='my_dir',
+    project_name='LSTM+Linear'
+)
+
+3. Predict the preprocessed test data and save it as a csv

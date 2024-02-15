@@ -1,0 +1,22 @@
+word2vec_lr.ipynb: 
+1. Load the preprocessed data. 
+
+2. Define a word2vec neural network to manually get embedding layers, then turn text data into vectors. 
+The key features of the neural network are presented in the following code:
+
+(isize_features=150, mode='skipgram', min_word_count=2, context=9)
+num_workers = 15  # Number of threads to run in parallel
+downsampling = 1e-3  # Downsample setting for frequent words
+
+3. Grid search the hyper parameters of a logistic model. The key model summary are as follow:
+logistic_regression_pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('logistic_regression', LogisticRegression(
+        penalty='l1', 
+        C=1,  # Set regularization strength
+        solver='saga',  # Use the 'saga' solver
+        max_iter=10000
+    ))
+])
+
+4. Predict the test data, and save as a CSV

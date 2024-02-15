@@ -1,0 +1,3 @@
+Preprocessing.ipynb file: 
+
+This file pre-process the text data, including remove stop words, stemming and punctuations. It also has an option to use spacy but would increase run time. Then it saves the preprocessed data on the assigned directory for NLP analysis
